@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#152B46" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Learn about Mamadou Sidibe — experienced tutor in French, English and Math for all ages." />
+  <title>About Me | Sidibe Tutoring</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ════════════════════ NAVBAR ════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html"    class="nav-link"        data-i18n="nav_home">Home</a>
+        <a href="about.html"    class="nav-link active"  data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  class="nav-link"        data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" class="nav-link btn-schedule" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════ PAGE HERO ════════════════════ -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="page-hero-badge"><i class="fas fa-user-tie"></i></div>
+      <h1 data-i18n="about_hero_title">About Me</h1>
+      <p  data-i18n="about_hero_subtitle">Passionate educator dedicated to every learner's success</p>
+    </div>
+  </header>
+
+  <!-- ════════════════════ ABOUT CONTENT ════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- ── Sidebar ── -->
+        <aside class="about-sidebar">
+          <!-- Profile Photo — replace src with your image file -->
+          <div class="about-photo">
+            <!-- PLACEHOLDER: add photo later -->
+            <!-- <img src="images/sidibe-profile.jpg" alt="Mamadou Sidibe" /> -->
+            <span class="about-photo-placeholder"><i class="fas fa-user"></i></span>
+          </div>
+
+          <p class="about-name">Mamadou Sidibe</p>
+          <p class="about-title-tag">Tutor · French · English · Math</p>
+
+          <hr class="about-divider" />
+
+          <div class="about-langs">
+            <span class="lang-tag">🇫🇷 French</span>
+            <span class="lang-tag">🇺🇸 English</span>
+
+          </div>
+
+          <hr class="about-divider" />
+
+          <div style="text-align:left;font-size:.85rem;">
+            <p style="margin-bottom:.4rem;"><i class="fas fa-envelope" style="color:var(--secondary);margin-right:.5rem;"></i>
+              <a href="mailto:ms8395074@gmail.com" style="color:var(--text-light);">ms8395074@gmail.com</a>
+            </p>
+            <p style="margin-bottom:.4rem;"><i class="fas fa-phone" style="color:var(--secondary);margin-right:.5rem;"></i>
+              <a href="tel:+34642504680" style="color:var(--text-light);">+34 642 504 680</a>
+            </p>
+            <p style="margin-bottom:.4rem;"><i class="fab fa-whatsapp" style="color:var(--secondary);margin-right:.5rem;"></i>
+              <a href="https://wa.me/905338765182" target="_blank" rel="noopener" style="color:var(--text-light);">+90 533 876 5182</a>
+            </p>
+            <p style="margin-bottom:.4rem;"><i class="fas fa-map-marker-alt" style="color:var(--secondary);margin-right:.5rem;"></i>
+              <span style="color:var(--text-light);">Girona / Figueres, España</span>
+            </p>
+            <p><i class="fas fa-users" style="color:var(--secondary);margin-right:.5rem;"></i>
+              <span style="color:var(--text-light);">Ages 5 – 65</span>
+            </p>
+          </div>
+
+          <hr class="about-divider" />
+          <a href="schedule.html" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="about_cta_schedule">Schedule a Session</a>
+        </aside>
+
+        <!-- ── Main Content ── -->
+        <div class="about-content">
+
+          <!-- Intro -->
+          <h2 data-i18n="about_intro_title">Hello, I'm Mamadou Sidibe</h2>
+          <p  data-i18n="about_intro_text">
+            I am a dedicated and experienced educator with a deep passion for teaching languages and mathematics.
+            I have helped students of all ages — from young children to working adults — build the skills,
+            confidence, and academic foundation they need to succeed.
+          </p>
+
+          <!-- ═══ EDUCATION ═══════════════════════════════════
+               ⚠️  UPDATE THIS SECTION with content from MamadouSidibe.pdf
+          ════════════════════════════════════════════════════ -->
+          <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="about_education_title">Education</span></h3>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <h4><!-- Degree Title from PDF --></h4>
+              <span><!-- Institution & Year from PDF --></span>
+              <p><!-- Description from PDF --></p>
+            </div>
+
+            <div class="timeline-item">
+              <h4><!-- Additional Degree/Certification from PDF --></h4>
+              <span><!-- Institution & Year from PDF --></span>
+              <p><!-- Description from PDF --></p>
+            </div>
+
+          </div>
+
+          <!-- ═══ EXPERIENCE ══════════════════════════════════
+               ⚠️  UPDATE THIS SECTION with content from MamadouSidibe.pdf
+          ════════════════════════════════════════════════════ -->
+          <h3><i class="fas fa-briefcase"></i> <span data-i18n="about_experience_title">Experience</span></h3>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <h4><!-- Job Title / Role from PDF --></h4>
+              <span><!-- Employer & Dates from PDF --></span>
+              <p><!-- Responsibilities / achievements from PDF --></p>
+            </div>
+
+            <div class="timeline-item">
+              <h4><!-- Additional Role from PDF --></h4>
+              <span><!-- Employer & Dates from PDF --></span>
+              <p><!-- Details from PDF --></p>
+            </div>
+
+            <div class="timeline-item">
+              <h4><!-- Additional Role from PDF --></h4>
+              <span><!-- Employer & Dates from PDF --></span>
+              <p><!-- Details from PDF --></p>
+            </div>
+
+          </div>
+
+          <!-- ═══ SKILLS ══════════════════════════════════════
+               ⚠️  UPDATE / ADD skills from MamadouSidibe.pdf
+          ════════════════════════════════════════════════════ -->
+          <h3><i class="fas fa-tools"></i> <span data-i18n="about_skills_title">Areas of Expertise</span></h3>
+          <div class="skills-grid">
+            <span class="skill-tag">French Language Arts</span>
+            <span class="skill-tag">English Language Arts</span>
+            <span class="skill-tag">ESL / FLE</span>
+            <span class="skill-tag">K–12 Mathematics</span>
+            <span class="skill-tag">Algebra & Geometry</span>
+            <span class="skill-tag">Calculus</span>
+
+            <span class="skill-tag">Exam Preparation</span>
+            <span class="skill-tag">Curriculum Design</span>
+            <span class="skill-tag">Student Assessment</span>
+            <!-- Add more from PDF if needed -->
+          </div>
+
+          <!-- Teaching Approach -->
+          <h3><i class="fas fa-lightbulb"></i> <span data-i18n="about_approach_title">My Teaching Approach</span></h3>
+          <div class="approach-box">
+            <p data-i18n="about_approach_text">
+              I believe every student has the potential to excel. My method combines structured, curriculum-aligned
+              lessons with engaging real-world applications. I adapt my pace and style to each individual —
+              slowing down on foundational concepts when needed, accelerating for advanced learners, and always
+              finding the most intuitive way to explain complex topics.
+            </p>
+          </div>
+
+        </div><!-- end .about-content -->
+      </div><!-- end .about-grid -->
+    </div>
+  </section>
+
+  <!-- ════════════════════ CTA ════════════════════ -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 data-i18n="about_cta_title">Ready to learn together?</h2>
+      <p  data-i18n="about_cta_subtitle">Book a session or reach out with any questions.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="schedule.html" class="btn btn-white btn-lg"    data-i18n="about_cta_schedule">Schedule a Session</a>
+        <a href="contact.html"  class="btn btn-secondary btn-lg" data-i18n="about_cta_contact">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+        <p data-i18n="footer_tagline">Tutoría experta para todas las edades en Francés, Inglés y Matemáticas.</p>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_pages">Quick Links</h4>
+        <a href="index.html"    data-i18n="nav_home">Home</a>
+        <a href="about.html"    data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_legal">Legal</h4>
+        <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="terms.html"   data-i18n="nav_terms">Terms of Use</a>
+      </div>
+      <div class="footer-contact">
+        <h4 data-i18n="footer_contact_title">Get in Touch</h4>
+        <a href="mailto:ms8395074@gmail.com"><i class="fas fa-envelope"></i> ms8395074@gmail.com</a>
+        <a href="tel:+34642504680"><i class="fas fa-phone"></i> +34 642 504 680</a>
+        <a href="https://wa.me/905338765182" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-i18n="footer_copy">© 2026 Sidibe Tutoring. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

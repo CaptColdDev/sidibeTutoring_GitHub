@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#152B46" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Sidibe Tutoring – Expert French, English & Math tutoring for ages 5 to 65." />
+  <title>Sidibe Tutoring | French, English &amp; Math</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html"   class="nav-link active" data-i18n="nav_home">Home</a>
+        <a href="about.html"   class="nav-link"        data-i18n="nav_about">About Me</a>
+        <a href="contact.html" class="nav-link"        data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" class="nav-link btn-schedule" data-i18n="nav_schedule">Schedule</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-content container">
+      <div class="hero-badge" data-i18n="hero_badge">Ages 5 – 65 Welcome</div>
+
+      <h1 class="hero-title">
+        <span data-i18n="hero_title_1">Expert Tutoring in</span><br />
+        <span class="hero-highlight" data-i18n="hero_title_2">Francés, Inglés y Matemáticas</span>
+      </h1>
+
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
+        Personalized, one-on-one sessions for learners of all ages. Build real skills, gain confidence, and reach your goals.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="schedule.html" class="btn btn-primary btn-lg" data-i18n="hero_cta_primary">Book a Session</a>
+        <a href="about.html"    class="btn btn-secondary btn-lg" data-i18n="hero_cta_secondary">Meet Your Tutor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SUBJECTS
+  ════════════════════════════════════════════════ -->
+  <section class="subjects section" id="subjects">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="subjects_title">Subjects I Teach</h2>
+        <p  data-i18n="subjects_subtitle">Comprehensive tutoring tailored to your unique needs and goals</p>
+      </div>
+
+      <div class="subjects-grid">
+        <!-- French -->
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-flag"></i></div>
+          <h3 data-i18n="subject_french">French</h3>
+          <p  data-i18n="subject_french_desc">From beginner to advanced — grammar, pronunciation, conversation, literature, and exam prep.</p>
+        </div>
+        <!-- English -->
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-book-open"></i></div>
+          <h3 data-i18n="subject_english">English</h3>
+          <p  data-i18n="subject_english_desc">Reading, writing, comprehension, ESL support, literature, and standardized test prep.</p>
+        </div>
+        <!-- Math -->
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+          <h3 data-i18n="subject_math">Mathematics</h3>
+          <p  data-i18n="subject_math_desc">Arithmetic, pre-algebra, algebra, geometry, trigonometry, and calculus — made clear and accessible.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       WHY CHOOSE
+  ════════════════════════════════════════════════ -->
+  <section class="why-section section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="why_title">Why Choose Sidibe Tutoring?</h2>
+        <p  data-i18n="why_subtitle">A personalized experience built for lasting success</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <i class="fas fa-users"></i>
+          <h4 data-i18n="why_1_title">All Ages Welcome</h4>
+          <p  data-i18n="why_1_desc">Customized sessions for learners aged 5 to 65 — from young children to adults.</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-calendar-check"></i>
+          <h4 data-i18n="why_2_title">Flexible Scheduling</h4>
+          <p  data-i18n="why_2_desc">Evening and weekend slots available. Book the time that works best for you.</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h4 data-i18n="why_3_title">Personalized Learning</h4>
+          <p  data-i18n="why_3_desc">Every program is tailored to the student's pace, learning style, and goals.</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-star"></i>
+          <h4 data-i18n="why_4_title">Proven Results</h4>
+          <p  data-i18n="why_4_desc">Students see measurable improvement in grades, test scores, and language fluency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       CTA BANNER
+  ════════════════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 data-i18n="cta_title">Ready to Start Your Learning Journey?</h2>
+      <p  data-i18n="cta_subtitle">Book your first session today — no long-term commitment required.</p>
+      <a href="schedule.html" class="btn btn-white btn-lg" data-i18n="cta_btn">Schedule an Appointment</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+        <p data-i18n="footer_tagline">Tutoría experta para todas las edades en Francés, Inglés y Matemáticas.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footer_pages">Quick Links</h4>
+        <a href="index.html"    data-i18n="nav_home">Home</a>
+        <a href="about.html"    data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" data-i18n="nav_schedule">Schedule</a>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footer_legal">Legal</h4>
+        <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="terms.html"   data-i18n="nav_terms">Terms of Use</a>
+      </div>
+
+      <div class="footer-contact">
+        <h4 data-i18n="footer_contact_title">Get in Touch</h4>
+        <a href="mailto:ms8395074@gmail.com"><i class="fas fa-envelope"></i> ms8395074@gmail.com</a>
+        <a href="tel:+34642504680"><i class="fas fa-phone"></i> +34 642 504 680</a>
+        <a href="https://wa.me/905338765182" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-i18n="footer_copy">© 2026 Sidibe Tutoring. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

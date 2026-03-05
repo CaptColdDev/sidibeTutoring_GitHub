@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#152B46" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Contact Mamadou Sidibe — send a message or ask about tutoring services." />
+  <title>Contact | Sidibe Tutoring</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ════════════════════ NAVBAR ════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html"    class="nav-link"        data-i18n="nav_home">Home</a>
+        <a href="about.html"    class="nav-link"        data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  class="nav-link active"  data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" class="nav-link btn-schedule" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════ PAGE HERO ════════════════════ -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="page-hero-badge"><i class="fas fa-envelope"></i></div>
+      <h1 data-i18n="contact_hero_title">Contact Me</h1>
+      <p  data-i18n="contact_hero_subtitle">Have a question or ready to get started? I'd love to hear from you.</p>
+    </div>
+  </header>
+
+  <!-- ════════════════════ CONTACT SECTION ════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- ── Contact Form ── -->
+        <div class="contact-form-card">
+          <h2 data-i18n="contact_form_title">Send a Message</h2>
+
+          <!-- Error message -->
+          <div id="contactError" style="display:none;background:#FEE2E2;color:#991B1B;border-radius:var(--radius-sm);padding:.7rem 1rem;margin-bottom:1rem;font-size:.88rem;"></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cName"><span data-i18n="form_name">Full Name</span> <span class="required">*</span></label>
+                <input type="text" id="cName" class="form-control" data-i18n-ph="form_name_ph" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="cEmail"><span data-i18n="form_email">Email Address</span> <span class="required">*</span></label>
+                <input type="email" id="cEmail" class="form-control" data-i18n-ph="form_email_ph" placeholder="your@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cPhone" data-i18n="form_phone">Phone Number (Optional)</label>
+              <input type="tel" id="cPhone" class="form-control" data-i18n-ph="form_phone_ph" placeholder="+1 (xxx) xxx-xxxx" />
+            </div>
+
+            <div class="form-group">
+              <label for="cSubject"><span data-i18n="form_subject">Subject</span> <span class="required">*</span></label>
+              <select id="cSubject" class="form-control" required>
+                <option value="" disabled selected data-i18n="form_subject_ph">Select a subject</option>
+                <option value="General Inquiry"      data-i18n="form_subject_opt_1">General Inquiry</option>
+                <option value="French Tutoring"      data-i18n="form_subject_opt_2">French Tutoring</option>
+                <option value="English Tutoring"     data-i18n="form_subject_opt_3">English Tutoring</option>
+                <option value="Math Tutoring"        data-i18n="form_subject_opt_4">Math Tutoring</option>
+
+                <option value="Scheduling / Pricing" data-i18n="form_subject_opt_6">Scheduling / Pricing</option>
+                <option value="Other"                data-i18n="form_subject_opt_7">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cMessage"><span data-i18n="form_message">Message</span> <span class="required">*</span></label>
+              <textarea id="cMessage" class="form-control" rows="6" data-i18n-ph="form_message_ph" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i>
+              <span data-i18n="form_submit">Send Message</span>
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div class="form-success" id="contactSuccess">
+            <i class="fas fa-check-circle" style="color:var(--accent);"></i>
+            <h3 data-i18n="form_success_title">Message Sent!</h3>
+            <p  data-i18n="form_success_text">Thank you for reaching out. I'll get back to you as soon as possible, typically within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- ── Contact Info ── -->
+        <div class="contact-info-card">
+          <h2 data-i18n="contact_info_title">Contact Information</h2>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-info-text">
+              <h4>Email</h4>
+              <a href="mailto:ms8395074@gmail.com">ms8395074@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-info-text">
+              <h4>Teléfono</h4>
+              <a href="tel:+34642504680">+34 642 504 680</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="contact-info-text">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/905338765182" target="_blank" rel="noopener">+90 533 876 5182</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-info-text">
+              <h4>Ubicación</h4>
+              <p>Girona / Figueres, España</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="contact-info-text">
+              <h4 data-i18n="contact_response_title">Response Time</h4>
+              <p data-i18n="contact_response_text">I typically respond within 24 hours. For urgent matters, please mention it in your message.</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-users"></i></div>
+            <div class="contact-info-text">
+              <h4>Students Served</h4>
+              <p>Ages 5 – 65 • All levels</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-book"></i></div>
+            <div class="contact-info-text">
+              <h4>Subjects</h4>
+              <p>French · English · Mathematics</p>
+            </div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--border);margin:1.5rem 0;" />
+
+          <a href="schedule.html" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="nav_schedule">
+            <i class="fas fa-calendar-check"></i> Schedule
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+        <p data-i18n="footer_tagline">Tutoría experta para todas las edades en Francés, Inglés y Matemáticas.</p>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_pages">Quick Links</h4>
+        <a href="index.html"    data-i18n="nav_home">Home</a>
+        <a href="about.html"    data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_legal">Legal</h4>
+        <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="terms.html"   data-i18n="nav_terms">Terms of Use</a>
+      </div>
+      <div class="footer-contact">
+        <h4 data-i18n="footer_contact_title">Get in Touch</h4>
+        <a href="mailto:ms8395074@gmail.com"><i class="fas fa-envelope"></i> ms8395074@gmail.com</a>
+        <a href="tel:+34642504680"><i class="fas fa-phone"></i> +34 642 504 680</a>
+        <a href="https://wa.me/905338765182" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-i18n="footer_copy">© 2026 Sidibe Tutoring. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

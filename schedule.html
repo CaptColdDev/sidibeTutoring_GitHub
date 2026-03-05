@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#152B46" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Schedule a tutoring appointment with Mamadou Sidibe — choose your date, time, and subject." />
+  <title>Schedule an Appointment | Sidibe Tutoring</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ════════════════════ NAVBAR ════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html"    class="nav-link"        data-i18n="nav_home">Home</a>
+        <a href="about.html"    class="nav-link"        data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  class="nav-link"        data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" class="nav-link btn-schedule active" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════ PAGE HERO ════════════════════ -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="page-hero-badge"><i class="fas fa-calendar-alt"></i></div>
+      <h1 data-i18n="schedule_hero_title">Schedule an Appointment</h1>
+      <p  data-i18n="schedule_hero_subtitle">Choose a date and time that works for you</p>
+    </div>
+  </header>
+
+  <!-- ════════════════════ SCHEDULE SECTION ════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Steps indicator -->
+      <div class="steps">
+        <div class="step active" id="step1">
+          <div class="step-num">1</div>
+          <div class="step-label" data-i18n="schedule_step_1">Select a Date</div>
+        </div>
+        <div class="step-line" id="line1"></div>
+        <div class="step" id="step2">
+          <div class="step-num">2</div>
+          <div class="step-label" data-i18n="schedule_step_2">Choose a Time</div>
+        </div>
+        <div class="step-line" id="line2"></div>
+        <div class="step" id="step3">
+          <div class="step-num">3</div>
+          <div class="step-label" data-i18n="schedule_step_3">Book Session</div>
+        </div>
+      </div>
+
+      <div class="schedule-layout">
+
+        <!-- ── Left: Calendar + Slots + Booking Form ── -->
+        <div>
+
+          <!-- Calendar -->
+          <div class="calendar-card">
+            <div class="cal-nav-row">
+              <button class="cal-nav-btn" id="prevMonthBtn" aria-label="Previous month">&#8249;</button>
+              <span class="cal-month-label" id="calMonthTitle"></span>
+              <button class="cal-nav-btn" id="nextMonthBtn" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+
+            <!-- Legend -->
+            <div class="cal-legend">
+              <div class="legend-item"><div class="legend-dot dot-available"></div><span data-i18n="legend_available">Available</span></div>
+              <div class="legend-item"><div class="legend-dot dot-limited"></div><span data-i18n="legend_limited">Limited</span></div>
+              <div class="legend-item"><div class="legend-dot dot-booked"></div><span data-i18n="legend_booked">Fully Booked</span></div>
+              <div class="legend-item"><div class="legend-dot dot-unavailable"></div><span data-i18n="legend_unavailable">Unavailable</span></div>
+            </div>
+          </div>
+
+          <!-- Time Slots -->
+          <div class="calendar-card" id="slotsSection" style="margin-top:1.5rem;display:none;">
+            <h3 id="slotsTitle" data-i18n="slots_title">Available Time Slots</h3>
+            <div class="slots-grid" id="slotsGrid">
+              <p class="slots-empty" data-i18n="slots_prompt">← Select a date from the calendar above</p>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <div class="booking-form-section" id="bookingFormSection">
+            <h3 data-i18n="booking_title">Complete Your Booking</h3>
+
+            <!-- Selected date/time pill -->
+            <div class="booking-selected-info">
+              <i class="fas fa-clock"></i>
+              <span id="bookingSelectedInfo"></span>
+            </div>
+
+            <!-- Error -->
+            <div id="bookingError" style="display:none;background:#FEE2E2;color:#991B1B;border-radius:var(--radius-sm);padding:.7rem 1rem;margin-bottom:1rem;font-size:.88rem;"></div>
+
+            <form id="bookingForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bNameInput"><span data-i18n="booking_name">Full Name</span> <span class="required">*</span></label>
+                  <input type="text" id="bNameInput" class="form-control" data-i18n-ph="booking_name_ph" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="bEmailInput"><span data-i18n="booking_email">Email Address</span> <span class="required">*</span></label>
+                  <input type="email" id="bEmailInput" class="form-control" data-i18n-ph="booking_email_ph" placeholder="your@email.com" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bPhoneInput" data-i18n="booking_phone">Phone Number</label>
+                  <input type="tel" id="bPhoneInput" class="form-control" data-i18n-ph="booking_phone_ph" placeholder="+1 (xxx) xxx-xxxx" />
+                </div>
+                <div class="form-group">
+                  <label for="bAgeInput"><span data-i18n="booking_age">Age</span> <span class="required">*</span></label>
+                  <input type="number" id="bAgeInput" class="form-control" min="5" max="65" data-i18n-ph="booking_age_ph" placeholder="Your age (5–65)" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bSubjectSel"><span data-i18n="booking_subject">Subject</span> <span class="required">*</span></label>
+                  <select id="bSubjectSel" class="form-control" required>
+                    <option value="" disabled selected data-i18n="booking_subject_sel">Select a subject</option>
+                    <option value="French"      data-i18n="booking_subj_1">French</option>
+                    <option value="English"     data-i18n="booking_subj_2">English</option>
+                    <option value="Mathematics" data-i18n="booking_subj_3">Mathematics</option>
+
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="bLevelSel" data-i18n="booking_level">Current Level</label>
+                  <select id="bLevelSel" class="form-control">
+                    <option value="" disabled selected data-i18n="booking_level_sel">Select your level</option>
+                    <option value="Beginner"     data-i18n="booking_level_beg">Beginner</option>
+                    <option value="Intermediate" data-i18n="booking_level_int">Intermediate</option>
+                    <option value="Advanced"     data-i18n="booking_level_adv">Advanced</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="bTypeSel"><span data-i18n="booking_type">Session Type</span> <span class="required">*</span></label>
+                <select id="bTypeSel" class="form-control" required>
+                  <option value="" disabled selected>--</option>
+                  <option value="Online (Virtual)" data-i18n="booking_type_online">Online (Virtual)</option>
+                  <option value="In-Person"        data-i18n="booking_type_person">In-Person</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bNotesInput" data-i18n="booking_notes">Additional Notes (Optional)</label>
+                <textarea id="bNotesInput" class="form-control" rows="3" data-i18n-ph="booking_notes_ph" placeholder="Specific topics, goals, or questions..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+                <i class="fas fa-calendar-check"></i>
+                <span data-i18n="booking_submit">Confirm Booking</span>
+              </button>
+            </form>
+
+            <!-- Success state -->
+            <div id="bookingSuccess" style="display:none;" class="form-success">
+              <i class="fas fa-check-circle" style="color:var(--accent);"></i>
+              <h3 data-i18n="booking_success_title">Appointment Requested!</h3>
+              <p  data-i18n="booking_success_text">Your request has been received. Mr. Sidibe will confirm your session via email within 24 hours.</p>
+              <a href="index.html" class="btn btn-primary" style="margin-top:1rem;">
+                <i class="fas fa-home"></i> Back to Home
+              </a>
+            </div>
+          </div>
+          <!-- end booking form -->
+
+        </div>
+        <!-- end left column -->
+
+        <!-- ── Right: Availability Info ── -->
+        <aside>
+          <div class="sidebar-card">
+            <h3 data-i18n="schedule_avail_title">My Availability</h3>
+
+            <div class="avail-item">
+              <span class="avail-day" data-i18n="schedule_weekdays">Weekdays (Mon – Fri)</span>
+              <span class="avail-hours" data-i18n="schedule_weekdays_h">4:00 PM – 8:00 PM</span>
+            </div>
+            <div class="avail-item">
+              <span class="avail-day" data-i18n="schedule_saturday">Saturdays</span>
+              <span class="avail-hours" data-i18n="schedule_saturday_h">10:00 AM – 5:00 PM</span>
+            </div>
+            <div class="avail-item">
+              <span class="avail-day" data-i18n="schedule_sunday">Sundays</span>
+              <span class="avail-badge badge-closed" data-i18n="schedule_sunday_h">Closed</span>
+            </div>
+          </div>
+
+          <!-- Subjects -->
+          <div class="sidebar-card" style="margin-top:1.2rem;">
+            <h3 data-i18n="subjects_title">Subjects I Teach</h3>
+            <ul style="display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem;">
+              <li style="display:flex;align-items:center;gap:.7rem;font-size:.9rem;">
+                <i class="fas fa-flag" style="color:var(--primary);width:16px;"></i>
+                <span data-i18n="subject_french">French</span>
+              </li>
+              <li style="display:flex;align-items:center;gap:.7rem;font-size:.9rem;">
+                <i class="fas fa-book-open" style="color:var(--accent);width:16px;"></i>
+                <span data-i18n="subject_english">English</span>
+              </li>
+              <li style="display:flex;align-items:center;gap:.7rem;font-size:.9rem;">
+                <i class="fas fa-square-root-alt" style="color:var(--secondary);width:16px;"></i>
+                <span data-i18n="subject_math">Mathematics</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="sidebar-card" style="margin-top:1.2rem;">
+            <h3 data-i18n="contact_info_title">Contact Information</h3>
+            <p style="font-size:.88rem;color:var(--text-light);margin-bottom:.8rem;">
+              Questions before booking?
+            </p>
+            <a href="mailto:ms8395074@gmail.com" style="font-size:.9rem;display:flex;align-items:center;gap:.5rem;color:var(--primary-light);">
+              <i class="fas fa-envelope"></i> ms8395074@gmail.com
+            </a>
+            <a href="tel:+34642504680" style="font-size:.9rem;display:flex;align-items:center;gap:.5rem;color:var(--primary-light);margin-top:.5rem;">
+              <i class="fas fa-phone"></i> +34 642 504 680
+            </a>
+            <a href="https://wa.me/905338765182" target="_blank" rel="noopener" style="font-size:.9rem;display:flex;align-items:center;gap:.5rem;color:var(--primary-light);margin-top:.5rem;">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="contact.html" class="btn btn-outline" style="margin-top:1rem;width:100%;justify-content:center;" data-i18n="nav_contact">Contact</a>
+          </div>
+        </aside>
+
+      </div><!-- end schedule-layout -->
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Sidibe<span class="logo-accent">Tutoring</span></span>
+        <p data-i18n="footer_tagline">Tutoría experta para todas las edades en Francés, Inglés y Matemáticas.</p>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_pages">Quick Links</h4>
+        <a href="index.html"    data-i18n="nav_home">Home</a>
+        <a href="about.html"    data-i18n="nav_about">About Me</a>
+        <a href="contact.html"  data-i18n="nav_contact">Contact</a>
+        <a href="schedule.html" data-i18n="nav_schedule">Schedule</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_legal">Legal</h4>
+        <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="terms.html"   data-i18n="nav_terms">Terms of Use</a>
+      </div>
+      <div class="footer-contact">
+        <h4 data-i18n="footer_contact_title">Get in Touch</h4>
+        <a href="mailto:ms8395074@gmail.com"><i class="fas fa-envelope"></i> ms8395074@gmail.com</a>
+        <a href="tel:+34642504680"><i class="fas fa-phone"></i> +34 642 504 680</a>
+        <a href="https://wa.me/905338765182" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-i18n="footer_copy">© 2026 Sidibe Tutoring. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/calendar.js"></script>
+</body>
+</html>
